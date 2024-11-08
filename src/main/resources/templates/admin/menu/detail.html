@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/inc/layout}"
+>
+<head>
+    <title>Rland - 메뉴상세</title>
+</head>
+<main layout:fragment="main">
+
+    <section class="">
+        <header class="n-bar">
+            <h1 class="n-heading:5">제품관리 / 메뉴관리</h1>
+            <div class="ml:3 d:flex ai:center">
+                <a href="list" class="n-icon n-icon:arrow_left n-btn n-btn:rounded n-btn-size:small">추가</a>
+            </div>
+        </header>
+
+        <section class="n-frame:rounded-shadow n-panel-detail">
+            <header>
+                <h1><span class="n-icon n-icon:description n-deco">메뉴상세</span></h1>
+                <div>
+                    <a href="edit.html" th:href="@{edit(id=${menu.id})}" class="n-icon n-icon:edit_square n-btn n-btn:rounded ml:3">수정</a>
+                </div>
+            </header>
+            <dl class="n-list:dash-lined">
+                <div>
+                    <dt>한글명</dt>
+                    <dd class="ml:1" th:text="${menu.korName}">카페 라떼</dd>
+                </div>
+                <div>
+                    <dt>영문명</dt>
+                    <dd class="ml:1" th:text="${menu.engName}">Cafe Latte</dd>
+                </div>
+                <div>
+                    <dt>사진</dt>
+                    <dd class="ml:1">
+                        <ul class="n-bar flex-wrap:wrap">
+                            <li th:each="img:${imgs}" th:with="active=${img.isDefault?'active:border':''}">
+                                <img src="/image/product/americano.svg"
+                                     class="max-width:6"
+                                    th:classappend="${active}"
+                                    th:src="@{/image/product/{img}(img=${img.src})}"></li>
+                        </ul>
+                    </dd>
+                </div>
+                <div>
+                    <dt>가격</dt>
+                    <dd class="ml:1" th:text="${#numbers.formatInteger(menu.price,3,'COMMA')}+'원'">1,000원</dd>
+                </div>
+                <div>
+                    <dt>등록일자</dt>
+                    <dd class="ml:1" th:text="${#dates.format(menu.regDate, 'yyyy-MM-dd a HH:mm')}">2024-12-25 12:00:00</dd>
+                </div>
+            </dl>
+
+        </section>
+
+        <section class="n-frame:rounded-shadow n-panel:card-grid">
+            <header>
+                <h1><span class="n-icon n-icon:recommend n-deco">추천목록</span></h1>
+                <div class="ml:3 d:flex ai:center">
+                    <a href="detail" class="n-icon n-icon:plus n-btn n-btn:rounded n-btn-size:small">추가</a>
+                </div>
+            </header>
+            <section class="n-frame:rounded-shadow n-panel:card-list bg-color:base-2 margin-bottom:7">
+                <header class="d:flex">
+                    <h1>추천메뉴 추가 패널</h1>
+                    <div class="d:flex flex-grow:1">
+                        <button class="ml:3 n-icon n-icon:add_task n-btn n-btn:rounded n-btn-size:small">추가</button>
+                        <button class="n-icon n-icon:x n-btn n-btn:rounded n-btn-size:small">추가</button>
+                        <button class="ml:auto n-icon n-icon:arrow_left n-btn n-btn:rounded n-btn-size:small">추가</button>
+                        <button class="ml:2 n-icon n-icon:arrow_right n-btn n-btn:rounded n-btn-size:small">추가</button>
+                    </div>
+                    <nav class="w:100p mt:3">
+                        <h1 class="d:none">필터링</h1>
+                        <ul class="n-bar">
+                            <li><a class="n-btn active" href="">전체</a></li>
+                            <li><a class="n-btn" href="">커피</a></li>
+                            <li><a class="n-btn" href="">케익</a></li>
+                            <li><a class="n-btn" href="">수제청</a></li>
+                            <li><a class="n-btn" href="">쿠키</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <div>
+                    <!---- 추천 메뉴 목록 ------------------------------------------>
+                    <section>
+                        <header>
+                            <h1 class="d:none">아메리카노</h1>
+                            <label class="mb:5">
+                                <input type="checkbox" class="n-toggle n-toggle-type:check-box n-toggle-size:1">
+                                <span>선택</span>
+                            </label>
+                        </header>
+                        <div><img src="/image/product/latte.svg"></div>
+                        <dl class="n-list:dash-lined">
+                            <div>
+                                <dt>한글명</dt>
+                                <dd>아메리카노</dd>
+                            </div>
+                            <div>
+                                <dt>등록일자</dt>
+                                <dd>2024-08-24</dd>
+                            </div>
+                        </dl>
+                    </section>
+                    <section>
+                        <header>
+                            <h1 class="d:none">아메리카노</h1>
+                            <label class="mb:5">
+                                <input type="checkbox" class="n-toggle n-toggle-type:check-box n-toggle-size:1">
+                                <span>선택</span>
+                            </label>
+                        </header>
+                        <div><img src="/image/product/latte.svg"></div>
+                        <dl class="n-list:dash-lined">
+                            <div>
+                                <dt>한글명</dt>
+                                <dd>아메리카노</dd>
+                            </div>
+                            <div>
+                                <dt>등록일자</dt>
+                                <dd>2024-08-24</dd>
+                            </div>
+                        </dl>
+                    </section>
+                    <section>
+                        <header>
+                            <h1 class="d:none">아메리카노</h1>
+                            <label class="mb:5">
+                                <input type="checkbox" class="n-toggle n-toggle-type:check-box n-toggle-size:1">
+                                <span>선택</span>
+                            </label>
+                        </header>
+                        <div><img src="/image/product/latte.svg"></div>
+                        <dl class="n-list:dash-lined">
+                            <div>
+                                <dt>한글명</dt>
+                                <dd>아메리카노</dd>
+                            </div>
+                            <div>
+                                <dt>등록일자</dt>
+                                <dd>2024-08-24</dd>
+                            </div>
+                        </dl>
+                    </section>
+                    <section>
+                        <header>
+                            <h1 class="d:none">아메리카노</h1>
+                            <label class="mb:5">
+                                <input type="checkbox" class="n-toggle n-toggle-type:check-box n-toggle-size:1">
+                                <span>선택</span>
+                            </label>
+                        </header>
+                        <div><img src="/image/product/latte.svg"></div>
+                        <dl class="n-list:dash-lined">
+                            <div>
+                                <dt>한글명</dt>
+                                <dd>아메리카노</dd>
+                            </div>
+                            <div>
+                                <dt>등록일자</dt>
+                                <dd>2024-08-24</dd>
+                            </div>
+                        </dl>
+                    </section>
+                    <section>
+                        <header>
+                            <h1 class="d:none">아메리카노</h1>
+                            <label class="mb:5">
+                                <input type="checkbox" class="n-toggle n-toggle-type:check-box n-toggle-size:1">
+                                <span>선택</span>
+                            </label>
+                        </header>
+                        <div><img src="/image/product/latte.svg"></div>
+                        <dl class="n-list:dash-lined">
+                            <div>
+                                <dt>한글명</dt>
+                                <dd>아메리카노</dd>
+                            </div>
+                            <div>
+                                <dt>등록일자</dt>
+                                <dd>2024-08-24</dd>
+                            </div>
+                        </dl>
+                    </section>
+                    <!-- ---------------------------------------------- -->
+                </div>
+            </section>
+            <div>
+                <section>
+                    <header>
+                        <h1 class="d:none">아메리카노</h1>
+                        <form method="post" class="mb:5 n-icon n-icon:remove_selection n-deco">
+                            <input type="hidden" value="1">
+                            <button>삭제</button>
+                        </form>
+                    </header>
+                    <div><img src="/image/product/latte.svg"></div>
+                    <dl class="n-list:dash-lined">
+                        <div>
+                            <dt>한글명</dt>
+                            <dd>아메리카노</dd>
+                        </div>
+                        <div>
+                            <dt>등록일자</dt>
+                            <dd>2024-08-24</dd>
+                        </div>
+                    </dl>
+                </section>
+                <section>
+                    <header>
+                        <h1 class="d:none">아메리카노</h1>
+                        <form method="post" class="mb:5 n-icon n-icon:remove_selection n-deco">
+                            <input type="hidden" value="1">
+                            <button>삭제</button>
+                        </form>
+                    </header>
+                    <div><img src="/image/product/latte.svg"></div>
+                    <dl class="n-list:dash-lined">
+                        <div>
+                            <dt>한글명</dt>
+                            <dd>아메리카노</dd>
+                        </div>
+                        <div>
+                            <dt>등록일자</dt>
+                            <dd>2024-08-24</dd>
+                        </div>
+                    </dl>
+                </section>
+                <section>
+                    <header>
+                        <h1 class="d:none">아메리카노</h1>
+                        <form method="post" class="mb:5 n-icon n-icon:remove_selection n-deco">
+                            <input type="hidden" value="1">
+                            <button>삭제</button>
+                        </form>
+                    </header>
+                    <div><img src="/image/product/latte.svg"></div>
+                    <dl class="n-list:dash-lined">
+                        <div>
+                            <dt>한글명</dt>
+                            <dd>아메리카노</dd>
+                        </div>
+                        <div>
+                            <dt>등록일자</dt>
+                            <dd>2024-08-24</dd>
+                        </div>
+                    </dl>
+                </section>
+                <section>
+                    <header>
+                        <h1 class="d:none">아메리카노</h1>
+                        <form method="post" class="mb:5 n-icon n-icon:remove_selection n-deco">
+                            <input type="hidden" value="1">
+                            <button>삭제</button>
+                        </form>
+                    </header>
+                    <div><img src="/image/product/latte.svg"></div>
+                    <dl class="n-list:dash-lined">
+                        <div>
+                            <dt>한글명</dt>
+                            <dd>아메리카노</dd>
+                        </div>
+                        <div>
+                            <dt>등록일자</dt>
+                            <dd>2024-08-24</dd>
+                        </div>
+                    </dl>
+                </section>
+            </div>
+        </section>
+
+    </section>
+</main>
+</html>

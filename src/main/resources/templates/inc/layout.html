@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+
+>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://www.newlecture.com/dist/v0.2.2/style.min.css" crossorigin="" type="text/css">
+  <link href="/css/style.css" type="text/css" rel="stylesheet">
+  <link href="/css/inc/header.css" type="text/css" rel="stylesheet">
+  <link href="/css/inc/footer.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div>
+  <!--header 부분-->
+  <div th:replace="~{inc/header}"></div>
+
+
+  <!--main 부분-->
+  <div layout:fragment="main"></div>
+
+
+  <!--footer 부분-->
+  <div th:replace="~{inc/footer}"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/icon.css" rel="stylesheet" type="text/css">
+    <link href="css/button.css" rel="stylesheet" type="text/css">
+    <link href="css/util.css" rel="stylesheet" type="text/css">
+    <link href="css/header.css" rel="stylesheet" type="text/css">
+    <link href="css/footer.css" rel="stylesheet" type="text/css">
+    <link href="css/component.css" rel="stylesheet" type="text/css">
+    <link href="css/sign-up.css"  rel="stylesheet" type="text/css">
+  </head>
+  <body>
+	<!-- ----------------------헤더---------------------------- -->
+	<header class="header-container">
+		<h1 class="d-none">알랜드</h1>
+      <div>
+        <a href="/index.html" title="index페이지로 이동합니다.">
+          <img src="/image/logo.svg">
+        </a>
+        <a class="icon icon-menu">메뉴</a>
+      </div>
+      <nav class="nav-wrap">
+        <h1 class="d-none">네비게이션 목록</h1>
+        <ul>
+          <li>
+            <a href="/index.html" class="icon icon-home" title="index페이지로 이동합니다.">홈</a>
+            <a href="/admin/index.html" class="icon icon-dashboard" title="관리자 대시보드로 이동합니다.">관리자 대시보드</a>
+          </li>
+          <li>
+            <a href="/sign-in.html" class="icon icon-person" title="로그인 페이지로 이동합니다.">로그인</a>
+            <a href="/logout" class="icon icon-sign-out" title="로그인 페이지로 이동합니다.">로그아웃</a>
+
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 메인 -->
+    <main>
+      <div class="sign-up">
+        <div class="sign-up-logo">
+          <img src="image/logo-black.svg" alt="Rland" />
+        </div>
+        <form class="sign-up-form">
+          <div class="sign-up-form-input">
+            <div>
+              <input
+                type="text"
+                class="input-bottom-line"
+                placeholder="이름"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                class="input-bottom-line"
+                placeholder="아이디"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                class="input-bottom-line"
+                placeholder="이메일"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                class="input-bottom-line"
+                placeholder="비밀번호"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                class="input-bottom-line"
+                placeholder="비밀번호 확인"
+                required
+              />
+            </div>            
+          </div>
+
+          <div class="sign-up-form-button mt-5">
+            <input type="submit" value="가입하기" class="btn btn-default" />
+          </div>
+
+          <div class="mt-4 font-14 d-flex justify-content-center ">
+            <a href="sign-in.html">로그인하기</a>
+          </div>
+
+        </form>
+      </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer-container">
+      <a href="">홈페이지 이용약관</a>
+      <span>사업자 등록번호: 123-45-67</span>
+      <span>Ⓒ 2023 Rland Newlecture All Rights Reserved</span>
+    </footer>
+  </body>
+</html>

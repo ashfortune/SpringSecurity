@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/inc/layout}"
+>
+<head>
+    <title>Rland - 메뉴등록</title>
+</head>
+<main layout:fragment="main">
+
+    <section class="">
+        <header class="n-bar">
+            <h1 class="n-heading:5">제품관리 / 메뉴관리</h1>
+            <div class="ml:3 d:flex ai:center">
+                <a href="list" class="n-icon n-icon:arrow_left n-btn n-btn:rounded n-btn-size:small">추가</a>
+            </div>
+        </header>
+
+        <section class="n-frame:rounded-shadow">
+            <header>
+                <h1><span class="n-icon n-icon:post_add n-deco">메뉴등록</span></h1>
+            </header>
+            <form class="n-form n-label-pos:left">
+                <div>
+                    <label>
+                        <span>한글명</span>
+                        <input type="text">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <span>영문명</span>
+                        <input type="text">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <span>가격</span>
+                        <input type="text">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <span>설명</span>
+                        <textarea></textarea>
+                    </label>
+                </div>
+                <div class="fl-dir:row jc:end">
+                    <button class="n-btn n-btn-color:main">등록</button>
+<!--                    <button class="n-btn n-btn-color:main">등록 후 이미지 추가</button>-->
+                    <a href="list" class="n-btn n-btn-color:main">등록 후 이미지 추가</a>
+                    <a href="list" class="n-btn">취소</a>
+                </div>
+            </form>
+        </section>
+
+    </section>
+</main>
+</html>

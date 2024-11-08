@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.newlecture.com/dist/v0.2.2/style.min.css" crossorigin="" type="text/css">
+    <link rel="stylesheet" href="/css/admin/style.css" type="text/css">
+</head>
+<body>
+    <div class="n-layout n-aside-size:full1 n-aside-float1 n-aside-pos:right1">
+        <!--header 부분-->
+        <div th:replace="~{admin/inc/header}"></div>
+
+        <div class="xl:w:xlarge">
+            <!--aside 부분-->
+            <div th:replace="~{admin/inc/aside}"></div>
+            <!--main 부분-->
+            <div layout:fragment="main"></div>
+        </div>
+
+        <!--footer 부분-->
+        <div th:replace="~{admin/inc/footer}"></div>
+    </div>
+</body>
+</html>

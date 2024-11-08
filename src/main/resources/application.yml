@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: rland-boot3
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://hi.newlecture.com:3306/rlanddb
+    username: rland
+    password: newhi1126
+#  autoconfigure:
+    # Security UserDetailsServiceAutoConfiguration disable
+#    exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+  security:
+    user:
+      password: 111
+      name: jb
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mappers/*Mapper.xml
+  type-aliases-package: kr.co.rland.boot3.entity
+
+logging:
+  level:
+    kr.co.rland.boot3.repository: trace
+    jdbc:
+      sqlonly: DEBUG          # SQL문
+      sqltiming: OFF          # SQL문과 수행 시간 로그 출력
+      audit: OFF              # ResultSet 을 제외한 모든 JDBC 호출 정보
+      resultset: OFF          # ResultSet 을 포함한 모든 JDBC 호출 정보
+      resultsettable: OFF     # SQL 결과 데이터를 Table 형태로 확인
+      connection: OFF        # 커넥션 연결, 연결해제 확인
+
+com:
+  newlecture:
+    mail-auth-url: http://localhost:5173 # 메일 인증 url

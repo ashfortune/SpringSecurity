@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.rland.boot3.repository.MenuRepository">
+
+    <select id="findAllByCategoryIdAndQuery" resultType="MenuView">
+        select m.*,
+            mi.src img,
+            nvl(ml.like_count, 0) like_count
+        from menu m
+            left join (select * from menu_image where is_default = 1) mi
+                on m.id = mi.menu_id
+            left join (select menu_id, count(menu_id) like_count from menu_like group by menu_id) ml
+                on m.id = ml.menu_id
+        <where>
+        <if test="categoryIds != null">
+<!--            category_id = #{categoryid}-->
+<!--            category_id in ( 1, 2, 3 )-->
+            <foreach item="cid" index="index" collection="categoryIds"
+                     open="category_id in (" separator="," close=")" nullable="true">
+                #{cid}
+            </foreach>
+        </if>
+        <if test="query != null">
+            and kor_name like '%${query}%'
+        </if>
+        </where>
+        order by reg_date desc
+        limit #{offset},#{size}
+    </select>
+
+<!--
+다음처럼 구현을 생각해 볼 수도 있다. 하지만 ...
+Advanced Result Maps
+https://mybatis.org/mybatis-3/sqlmap-xml.html#advanced-result-maps
+
+    <resultMap id="MenuWidthImageMap" type="MenuView" autoMapping="true">
+        <id property="id" column="id" />
+        <result property="korName" column="kor_name"/>
+        <result property="engName" column="eng_name"/>
+        <result property="regDate" column="reg_date"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="regMemberId" column="reg_member_id"/>
+        <collection property="images" ofType="MenuImage">
+            <id property="id" column="mi_menu_id" />
+            <result property="id" column="mi_id"/>
+            <result property="src" column="mi_src"/>
+            <result property="menuId" column="mi_menu_id"/>
+            <result property="isDefault" column="mi_is_default"/>
+        </collection>
+    </resultMap>
+    <select id="findAllWithImages" resultMap="MenuWidthImageMap">
+        select m.*,
+            mi.id mi_id,
+            mi.src mi_src,
+            mi.menu_id mi_menu_id,
+            mi.is_default mi_is_default,
+            nvl(ml.like_count, 0) like_count
+        from menu m
+            left join menu_image mi
+                on m.id = mi.menu_id
+            left join (select menu_id, count(menu_id) like_count from menu_like group by menu_id) ml
+                on m.id = ml.menu_id
+        <where>
+            <if test="categoryId != null">
+                category_id = #{categoryid}
+            </if>
+            <if test="query != null">
+                and kor_name like '%${query}%'
+            </if>
+        </where>
+        order by reg_date desc
+    </select>
+-->
+    <select id="findById" resultType="Menu">
+        select * from menu
+        where id=#{id}
+    </select>
+
+    <insert id="save" parameterType="Menu">
+        insert into menu(
+            kor_name,
+            eng_name,
+            price,
+            reg_member_id,
+            category_id,
+            description
+        )
+        values(
+            #{korname},
+            #{engname},
+            #{price},
+            #{regmemberid},
+            #{categoryid},
+            #{description}
+        )
+    </insert>
+
+    <delete id="deleteById">
+        delete menu where id=#{id}
+    </delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
